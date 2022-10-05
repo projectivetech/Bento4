@@ -169,7 +169,10 @@ print("TARGET = " + SDK_TARGET)
 BENTO4_VERSION = GetVersion()
 
 # compute paths
-SDK_REVISION = GetSdkRevision()
+if len(sys.argv) == 2:
+    SDK_REVISION = sys.argv[1]
+else:
+    SDK_REVISION = GetSdkRevision()
 if SDK_REVISION is None:
     sys.exit(1)
 SDK_NAME=f'Bento4-SDK-{BENTO4_VERSION}-{SDK_REVISION}.{SDK_TARGET}'
